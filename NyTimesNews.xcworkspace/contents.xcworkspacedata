@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/yserhii/Desktop/NyTimesNews/NyTimesNews/V/FavoriteCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:NyTimesNews.xcodeproj">
    </FileRef>
    <FileRef

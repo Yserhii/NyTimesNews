@@ -3,12 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A045AAA42317DF5B00ECBC75 /* MostViewedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A045AAA32317DF5B00ECBC75 /* MostViewedController.swift */; };
+		A045AAA62317DF8300ECBC75 /* MostViewedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A045AAA52317DF8300ECBC75 /* MostViewedCell.swift */; };
+		A045AAA82317DFA200ECBC75 /* MostSharedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A045AAA72317DFA200ECBC75 /* MostSharedCell.swift */; };
+		A045AAAA2317DFBC00ECBC75 /* MostSharedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A045AAA92317DFBC00ECBC75 /* MostSharedController.swift */; };
+		A045AAAC2317DFD300ECBC75 /* MostEmailedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A045AAAB2317DFD300ECBC75 /* MostEmailedController.swift */; };
+		A045AAAE2317DFDE00ECBC75 /* MostEmailedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A045AAAD2317DFDE00ECBC75 /* MostEmailedCell.swift */; };
+		A045AAB02317E81B00ECBC75 /* RequestManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A045AAAF2317E81B00ECBC75 /* RequestManeger.swift */; };
+		A089C32E23190F2200C36B68 /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A089C32D23190F2200C36B68 /* FavoriteController.swift */; };
+		A089C33023190F3F00C36B68 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A089C32F23190F3F00C36B68 /* FavoriteCell.swift */; };
 		A0E4EDD32317D28D000D62F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E4EDD22317D28D000D62F2 /* AppDelegate.swift */; };
-		A0E4EDD52317D28D000D62F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E4EDD42317D28D000D62F2 /* ViewController.swift */; };
 		A0E4EDD82317D28D000D62F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0E4EDD62317D28D000D62F2 /* Main.storyboard */; };
 		A0E4EDDB2317D28D000D62F2 /* NyTimesNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0E4EDD92317D28D000D62F2 /* NyTimesNews.xcdatamodeld */; };
 		A0E4EDDD2317D28E000D62F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E4EDDC2317D28E000D62F2 /* Assets.xcassets */; };
@@ -19,9 +27,17 @@
 /* Begin PBXFileReference section */
 		750982299B53FF74C19A9F9C /* Pods_NyTimesNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NyTimesNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80AC7A5DDB22B599FD08F95A /* Pods-NyTimesNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NyTimesNews.debug.xcconfig"; path = "Target Support Files/Pods-NyTimesNews/Pods-NyTimesNews.debug.xcconfig"; sourceTree = "<group>"; };
+		A045AAA32317DF5B00ECBC75 /* MostViewedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostViewedController.swift; sourceTree = "<group>"; };
+		A045AAA52317DF8300ECBC75 /* MostViewedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostViewedCell.swift; sourceTree = "<group>"; };
+		A045AAA72317DFA200ECBC75 /* MostSharedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostSharedCell.swift; sourceTree = "<group>"; };
+		A045AAA92317DFBC00ECBC75 /* MostSharedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostSharedController.swift; sourceTree = "<group>"; };
+		A045AAAB2317DFD300ECBC75 /* MostEmailedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostEmailedController.swift; sourceTree = "<group>"; };
+		A045AAAD2317DFDE00ECBC75 /* MostEmailedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostEmailedCell.swift; sourceTree = "<group>"; };
+		A045AAAF2317E81B00ECBC75 /* RequestManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManeger.swift; sourceTree = "<group>"; };
+		A089C32D23190F2200C36B68 /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
+		A089C32F23190F3F00C36B68 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoriteCell.swift; path = /Users/yserhii/Desktop/NyTimesNews/NyTimesNews/V/FavoriteCell.swift; sourceTree = "<absolute>"; };
 		A0E4EDCF2317D28D000D62F2 /* NyTimesNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NyTimesNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E4EDD22317D28D000D62F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0E4EDD42317D28D000D62F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A0E4EDD72317D28D000D62F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0E4EDDA2317D28D000D62F2 /* NyTimesNews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NyTimesNews.xcdatamodel; sourceTree = "<group>"; };
 		A0E4EDDC2317D28E000D62F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,8 +64,44 @@
 				80AC7A5DDB22B599FD08F95A /* Pods-NyTimesNews.debug.xcconfig */,
 				FE476041FF9C9822AA56142B /* Pods-NyTimesNews.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A045AA9F2317DD1E00ECBC75 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A045AAAF2317E81B00ECBC75 /* RequestManeger.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A045AAA02317DD2200ECBC75 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				A045AAA32317DF5B00ECBC75 /* MostViewedController.swift */,
+				A045AAAB2317DFD300ECBC75 /* MostEmailedController.swift */,
+				A045AAA92317DFBC00ECBC75 /* MostSharedController.swift */,
+				A089C32D23190F2200C36B68 /* FavoriteController.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A045AAA12317DD2500ECBC75 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				A045AAA52317DF8300ECBC75 /* MostViewedCell.swift */,
+				A045AAAD2317DFDE00ECBC75 /* MostEmailedCell.swift */,
+				A045AAA72317DFA200ECBC75 /* MostSharedCell.swift */,
+				A089C32F23190F3F00C36B68 /* FavoriteCell.swift */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A045AAA22317DD2900ECBC75 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
 			sourceTree = "<group>";
 		};
 		A0E4EDC62317D28D000D62F2 = {
@@ -74,7 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				A0E4EDD22317D28D000D62F2 /* AppDelegate.swift */,
-				A0E4EDD42317D28D000D62F2 /* ViewController.swift */,
+				A045AAA22317DD2900ECBC75 /* M */,
+				A045AAA12317DD2500ECBC75 /* V */,
+				A045AAA02317DD2200ECBC75 /* C */,
+				A045AA9F2317DD1E00ECBC75 /* Utils */,
 				A0E4EDD62317D28D000D62F2 /* Main.storyboard */,
 				A0E4EDDC2317D28E000D62F2 /* Assets.xcassets */,
 				A0E4EDDE2317D28E000D62F2 /* LaunchScreen.storyboard */,
@@ -207,8 +262,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0E4EDD52317D28D000D62F2 /* ViewController.swift in Sources */,
 				A0E4EDDB2317D28D000D62F2 /* NyTimesNews.xcdatamodeld in Sources */,
+				A045AAAA2317DFBC00ECBC75 /* MostSharedController.swift in Sources */,
+				A045AAA42317DF5B00ECBC75 /* MostViewedController.swift in Sources */,
+				A045AAA82317DFA200ECBC75 /* MostSharedCell.swift in Sources */,
+				A045AAAE2317DFDE00ECBC75 /* MostEmailedCell.swift in Sources */,
+				A089C33023190F3F00C36B68 /* FavoriteCell.swift in Sources */,
+				A089C32E23190F2200C36B68 /* FavoriteController.swift in Sources */,
+				A045AAA62317DF8300ECBC75 /* MostViewedCell.swift in Sources */,
+				A045AAAC2317DFD300ECBC75 /* MostEmailedController.swift in Sources */,
+				A045AAB02317E81B00ECBC75 /* RequestManeger.swift in Sources */,
 				A0E4EDD32317D28D000D62F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
