@@ -15,7 +15,7 @@ class FavoriteNewsCore: UIViewController {
 
     var favoriteNews: [NSManagedObject] = []
     
-    func save(oneNews: JSON?) {
+    func save(oneNews: JSON?, image: UIImage?) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -24,18 +24,20 @@ class FavoriteNewsCore: UIViewController {
         
         do {
             let data = try oneNews?.rawData()
+            let dataImage = image?.pngData()
+            news.setValue(dataImage, forKey: "image")
             news.setValue(data, forKeyPath: "news")
         } catch let error as NSError {
             print("NSJSONSerialization Error: \(error)")
             return
         }
+        
         do {
             try managedContext.save()
             favoriteNews.append(news)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-
     }
     
     func delete(indexPath: Int) {

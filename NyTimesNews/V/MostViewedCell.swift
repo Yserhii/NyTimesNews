@@ -20,11 +20,13 @@ class MostViewedCell: UITableViewCell {
     var data: JSON? {
         didSet {
             if data != nil {
+                self.imageNews.isHidden = true
                 title.text = data?["title"].string ?? ""
                 soursce.text = data?["source"].string ?? ""
                 date.text = data?["published_date"].string ?? "0000-00-00"
                 self.url = data?["url"].string ?? ""
                 if let image = URL(string: data?["media"][0]["media-metadata"][1]["url"].string ?? "") {
+                    self.imageNews.isHidden = false
                     let queue = DispatchQueue.global(qos: .utility)
                     queue.async {
                         if let isImage = try? Data(contentsOf: image) {
@@ -37,6 +39,15 @@ class MostViewedCell: UITableViewCell {
                 }
             }
         }
+    }
+    
+    func dataEmpty() {
+        self.url = ""
+        self.title.text = "The limit of 6 requests per minute has been reached. Try again in  one minutes."
+        self.soursce.text = ""
+        self.date.text = ""
+        self.imageNews.image = .none
+        self.imageNews.isHidden = true
     }
     
     override func awakeFromNib() {

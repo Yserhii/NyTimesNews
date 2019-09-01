@@ -16,10 +16,9 @@ class RequestManeger {
     private let site: String = "https://api.nytimes.com/svc/mostpopular/v2/"
     private let day: String = "/30/"
     
-    func getNew(category: String, soursForShared: String, completationHandler: @escaping(JSON?) -> Void) {
+    func getNew(category: String, soursForShared: String, page: Int, completationHandler: @escaping(JSON?) -> Void) {
         
-        let reqUrlCurrent: String = "\(self.site)\(category)\(self.day)\(soursForShared).json?api-key=\(self.key)"
-        print(reqUrlCurrent)
+        let reqUrlCurrent: String = "\(self.site)\(category)\(self.day)\(soursForShared).json?offset=\(page)&api-key=\(self.key)"
         Alamofire.request(reqUrlCurrent).responseJSON { response in
             if response.result.isSuccess {
                 completationHandler(JSON(response.data!))

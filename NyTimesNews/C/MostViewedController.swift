@@ -13,12 +13,19 @@ import SafariServices
 
 class MostViewedController: UIViewController {
 
-    private var news: JSON?
+    private var page: Int = 0
+    private var numNews: Int = 0
+    private var news: [JSON?] = []
     private var firstRequestNews: Bool = false
     private let category: String = "viewed"
     private let requestManeger = RequestManeger()
     private let favoriteNewsCore = FavoriteNewsCore()
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func clickScrollTop(_ sender: UIButton) {
+        //scrollToTop when click buttom
+        self.tableView.scrollToTop(animated: true)
+    }
     
     @objc func handleRefreshControl() {
         getViewedNews()
@@ -34,6 +41,7 @@ class MostViewedController: UIViewController {
     }
     
     func checkForDuplicateNews(cell: MostViewedCell) -> Bool {
+        //Check for duplicate news
         for index in self.favoriteNewsCore.favoriteNews {
             if JSON(index.value(forKeyPath: "news")!)["url"].string == cell.url {
                 return true
@@ -43,6 +51,7 @@ class MostViewedController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //Request for first 20 news
         if firstRequestNews == false {
             getViewedNews()
         }
@@ -51,23 +60,34 @@ class MostViewedController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.prefetchDataSource = self
         configureRefreshControl()
     }
 }
 
-extension MostViewedController: UITableViewDelegate, UITableViewDataSource, SFSafariViewControllerDelegate {
+extension MostViewedController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, SFSafariViewControllerDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news?["results"].count ?? 0
+        return numNews
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ViewedCell", for: indexPath) as! MostViewedCell
-        cell.data = news?["results"][indexPath.row]
+        if news.count > indexPath.row {
+            cell.data = news[indexPath.row]
+            self.tableView.reloadRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
+        } else {
+            cell.dataEmpty()
+        }
         return cell
     }
     
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        dismiss(animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Select action for open news in Safary
         let cell = tableView.cellForRow(at: indexPath) as! MostViewedCell
         if let url = URL(string: cell.url) {
             let vc = SFSafariViewController(url: url)
@@ -77,14 +97,14 @@ extension MostViewedController: UITableViewDelegate, UITableViewDataSource, SFSa
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
+        //Swipe left for add to favorites
         let favoriteNews = UIContextualAction(style: .normal, title: "") { [weak self] action, view, completion in
             guard let self = self else { return }
             let cell = tableView.cellForRow(at: indexPath) as! MostViewedCell
             if self.checkForDuplicateNews(cell: cell) == true {
                 self.alertError(title: "", message: "This news has already been added to your favorites.")
             } else {
-                self.favoriteNewsCore.save(oneNews: self.news?["results"][indexPath.row])
+                self.favoriteNewsCore.save(oneNews: self.news[indexPath.row], image: cell.imageNews.image)
             }
             completion(true)
         }
@@ -92,18 +112,46 @@ extension MostViewedController: UITableViewDelegate, UITableViewDataSource, SFSa
         favoriteNews.backgroundColor = .green
         return UISwipeActionsConfiguration(actions: [favoriteNews])
     }
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        //Auto-load news using prefetchRowsAt. For one request, get 20 news.
+        for indexPath in indexPaths {
+            if indexPath.row % 20 == 0 && indexPath.row < self.numNews && indexPath.row != 0 && indexPath.row > self.page {
+                self.fetchNews(ofIndex: indexPath.row)
+            }
+        }
+    }
 }
 
 extension MostViewedController {
     
+    func fetchNews(ofIndex index: Int) {
+        //Request for the next page with 20 news
+        self.page += 20
+        requestManeger.getNew(category: self.category, soursForShared: "", page: self.page, completationHandler: { [weak self] response in
+        guard let self = self else { return }
+        if let response = response {
+            self.news.append(contentsOf: response["results"].array ?? [])
+            }
+        })
+    }
+    
     func getViewedNews() {
-        requestManeger.getNew(category: self.category, soursForShared: "", completationHandler: { [weak self] response in
+        //Request for the news
+        self.page = 0
+        self.numNews = 0
+        requestManeger.getNew(category: self.category, soursForShared: "", page: self.page, completationHandler: { [weak self] response in
             guard let self = self else { return }
             if let response = response {
-                self.news = response
-                self.firstRequestNews = true
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                if response["fault"]["detail"]["errorcode"] != "policies.ratelimit.QuotaViolation" {
+                    self.news = response["results"].array ?? []
+                    self.numNews = response["num_results"].int ?? 0
+                    self.firstRequestNews = true
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } else {
+                    self.alertError(title: "Error", message: "No connection to the news source server. Try later")
                 }
             } else {
                 self.alertError(title: "Error", message: "No connection to the news source server. Try later")
@@ -112,6 +160,7 @@ extension MostViewedController {
     }
     
     func resizedImage(image: UIImage, for size: CGSize) -> UIImage? {
+        //Change size image
         let renderer = UIGraphicsImageRenderer(size: size)
         return renderer.image { (context) in
             image.draw(in: CGRect(origin: .zero, size: size))
@@ -119,7 +168,6 @@ extension MostViewedController {
     }
     
     func alertError(title: String, message: String) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)

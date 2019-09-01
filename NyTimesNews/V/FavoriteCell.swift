@@ -14,6 +14,7 @@ class FavoriteCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var soursce: UILabel!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var abstract: UILabel!
     @IBOutlet weak var imageNews: UIImageView!
     
     var data: JSON? {
@@ -22,18 +23,8 @@ class FavoriteCell: UITableViewCell {
                 title.text = data?["title"].string ?? ""
                 soursce.text = data?["source"].string ?? ""
                 date.text = data?["published_date"].string ?? "0000-00-00"
+                abstract.text = data?["abstract"].string ?? ""
                 self.url = data?["url"].string ?? ""
-                if let image = URL(string: data?["media"][0]["media-metadata"][1]["url"].string ?? "") {
-                    let queue = DispatchQueue.global(qos: .utility)
-                    queue.async {
-                        if let isImage = try? Data(contentsOf: image) {
-                            DispatchQueue.main.async {
-                                self.imageNews.image = UIImage(data: isImage)
-                                self.imageNews.contentMode = .scaleAspectFit
-                            }
-                        }
-                    }
-                }
             }
         }
     }

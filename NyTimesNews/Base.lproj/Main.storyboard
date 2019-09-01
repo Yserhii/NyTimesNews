@@ -93,17 +93,27 @@
                                     <outlet property="delegate" destination="rF5-tD-5l8" id="7Wn-1r-MbP"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.34999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97I-tf-hC1">
+                                <rect key="frame" x="20" y="745" width="34" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="⬆"/>
+                                <connections>
+                                    <action selector="clickScrollTop:" destination="rF5-tD-5l8" eventType="touchUpInside" id="GLV-X3-LgB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pX3-JJ-B8z" firstAttribute="bottom" secondItem="Vo8-Xj-ZK0" secondAttribute="bottom" id="Jck-SQ-qdd"/>
                             <constraint firstItem="Vo8-Xj-ZK0" firstAttribute="leading" secondItem="pX3-JJ-B8z" secondAttribute="leading" id="O2c-Ss-LNu"/>
+                            <constraint firstItem="pX3-JJ-B8z" firstAttribute="bottom" secondItem="97I-tf-hC1" secondAttribute="bottom" constant="20" id="Ohl-cS-otB"/>
                             <constraint firstItem="pX3-JJ-B8z" firstAttribute="trailing" secondItem="Vo8-Xj-ZK0" secondAttribute="trailing" id="Pua-o3-HgX"/>
+                            <constraint firstItem="97I-tf-hC1" firstAttribute="leading" secondItem="pX3-JJ-B8z" secondAttribute="leading" constant="20" id="Vdd-wu-Nsg"/>
                             <constraint firstItem="Vo8-Xj-ZK0" firstAttribute="top" secondItem="pX3-JJ-B8z" secondAttribute="top" id="l0L-By-ebe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pX3-JJ-B8z"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Emailed" id="WDu-NC-8rT"/>
+                    <tabBarItem key="tabBarItem" title="Emailed" image="email_35" id="WDu-NC-8rT"/>
                     <connections>
                         <outlet property="tableView" destination="Vo8-Xj-ZK0" id="IKC-xc-8bn"/>
                     </connections>
@@ -120,8 +130,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-zG-D87">
+                                <rect key="frame" x="0.0" y="44" width="414" height="29"/>
+                                <segments>
+                                    <segment title="facebook"/>
+                                    <segment title="email"/>
+                                    <segment title="twitter"/>
+                                </segments>
+                                <connections>
+                                    <action selector="soursesSegmentControl:" destination="1IV-JL-2CM" eventType="valueChanged" id="GZ9-V7-iNb"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="utC-Of-U3W">
-                                <rect key="frame" x="0.0" y="72" width="414" height="741"/>
+                                <rect key="frame" x="0.0" y="73" width="414" height="740"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SharedCell" rowHeight="264" id="tLV-Op-eC9" customClass="MostSharedCell" customModule="NyTimesNews" customModuleProvider="target">
@@ -195,17 +216,14 @@
                                     <outlet property="delegate" destination="1IV-JL-2CM" id="N1s-6a-380"/>
                                 </connections>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MfF-zG-D87">
-                                <rect key="frame" x="0.0" y="44" width="414" height="29"/>
-                                <segments>
-                                    <segment title="facebook"/>
-                                    <segment title="email"/>
-                                    <segment title="twitter"/>
-                                </segments>
+                            <button opaque="NO" alpha="0.34999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8y-ST-qua">
+                                <rect key="frame" x="20" y="745" width="34" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="⬆"/>
                                 <connections>
-                                    <action selector="soursesSegmentControl:" destination="1IV-JL-2CM" eventType="valueChanged" id="GZ9-V7-iNb"/>
+                                    <action selector="clickScrollTop:" destination="1IV-JL-2CM" eventType="touchUpInside" id="9WD-oR-iqf"/>
                                 </connections>
-                            </segmentedControl>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -213,13 +231,15 @@
                             <constraint firstItem="MfF-zG-D87" firstAttribute="leading" secondItem="Qlm-M5-AAW" secondAttribute="leading" id="L3J-4i-IxD"/>
                             <constraint firstItem="Qlm-M5-AAW" firstAttribute="bottom" secondItem="utC-Of-U3W" secondAttribute="bottom" id="Y6W-Xx-s8V"/>
                             <constraint firstItem="Qlm-M5-AAW" firstAttribute="trailing" secondItem="MfF-zG-D87" secondAttribute="trailing" id="ZJ0-Kl-UdD"/>
-                            <constraint firstItem="utC-Of-U3W" firstAttribute="top" secondItem="MfF-zG-D87" secondAttribute="bottom" id="lQp-jz-clD"/>
+                            <constraint firstItem="c8y-ST-qua" firstAttribute="leading" secondItem="Qlm-M5-AAW" secondAttribute="leading" constant="20" id="hrd-vI-Tvv"/>
+                            <constraint firstItem="utC-Of-U3W" firstAttribute="top" secondItem="MfF-zG-D87" secondAttribute="bottom" constant="1" id="lQp-jz-clD"/>
+                            <constraint firstItem="Qlm-M5-AAW" firstAttribute="bottom" secondItem="c8y-ST-qua" secondAttribute="bottom" constant="20" id="mLy-FH-ZOM"/>
                             <constraint firstItem="utC-Of-U3W" firstAttribute="leading" secondItem="Qlm-M5-AAW" secondAttribute="leading" id="pJO-Sz-aRy"/>
                             <constraint firstItem="MfF-zG-D87" firstAttribute="top" secondItem="Qlm-M5-AAW" secondAttribute="top" id="wiE-TM-6Z2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qlm-M5-AAW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shared" id="0tW-k0-EY7"/>
+                    <tabBarItem key="tabBarItem" title="Shared" image="share_35" id="0tW-k0-EY7"/>
                     <connections>
                         <outlet property="tableView" destination="utC-Of-U3W" id="OHG-GM-F1P"/>
                     </connections>
@@ -263,7 +283,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-UL-Nml">
-                                                    <rect key="frame" x="22" y="29" width="370" height="155.5"/>
+                                                    <rect key="frame" x="22" y="29" width="370" height="176"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Nm-0j-XR1">
                                                             <rect key="frame" x="0.0" y="0.0" width="370" height="24"/>
@@ -277,12 +297,20 @@
                                                                 <constraint firstAttribute="width" secondItem="3ta-fg-BOS" secondAttribute="height" multiplier="19 : 10" id="E6N-8d-2gV"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abstract" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWu-A0-MKX">
+                                                            <rect key="frame" x="0.0" y="155.5" width="370" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="YWu-A0-MKX" firstAttribute="leading" secondItem="Mlb-UL-Nml" secondAttribute="leading" id="2ED-Zz-9Nt"/>
                                                         <constraint firstItem="3ta-fg-BOS" firstAttribute="leading" secondItem="Mlb-UL-Nml" secondAttribute="leading" constant="60" id="FuX-oT-Sk5"/>
                                                         <constraint firstAttribute="trailing" secondItem="8Nm-0j-XR1" secondAttribute="trailing" id="O0Q-vv-mgu"/>
                                                         <constraint firstAttribute="trailing" secondItem="3ta-fg-BOS" secondAttribute="trailing" constant="60" id="Rzf-Nn-kS7"/>
                                                         <constraint firstItem="8Nm-0j-XR1" firstAttribute="leading" secondItem="Mlb-UL-Nml" secondAttribute="leading" id="Ybb-2F-dbi"/>
+                                                        <constraint firstAttribute="trailing" secondItem="YWu-A0-MKX" secondAttribute="trailing" id="jAg-F0-5ju"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -299,6 +327,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="abstract" destination="YWu-A0-MKX" id="88p-2a-QzO"/>
                                             <outlet property="date" destination="OKu-8q-qqL" id="G3j-Hy-stf"/>
                                             <outlet property="imageNews" destination="3ta-fg-BOS" id="T3j-MH-0oH"/>
                                             <outlet property="soursce" destination="aJW-GD-0BE" id="7Ad-nV-j1P"/>
@@ -311,17 +340,27 @@
                                     <outlet property="delegate" destination="feo-Dp-0WF" id="exp-SZ-q8D"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.34999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGu-ka-zh3">
+                                <rect key="frame" x="20" y="745" width="34" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="⬆"/>
+                                <connections>
+                                    <action selector="clickScrollTop:" destination="feo-Dp-0WF" eventType="touchUpInside" id="6gP-2n-B77"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8Ak-fo-yWU" firstAttribute="bottom" secondItem="jGu-ka-zh3" secondAttribute="bottom" constant="20" id="10K-Ff-lda"/>
                             <constraint firstItem="8Ak-fo-yWU" firstAttribute="bottom" secondItem="kYd-bk-Br1" secondAttribute="bottom" id="4rm-sY-6lQ"/>
                             <constraint firstItem="kYd-bk-Br1" firstAttribute="leading" secondItem="8Ak-fo-yWU" secondAttribute="leading" id="60m-Cu-cnh"/>
+                            <constraint firstItem="jGu-ka-zh3" firstAttribute="leading" secondItem="8Ak-fo-yWU" secondAttribute="leading" constant="20" id="M1z-Ww-zaB"/>
                             <constraint firstItem="8Ak-fo-yWU" firstAttribute="trailing" secondItem="kYd-bk-Br1" secondAttribute="trailing" id="WLz-2W-VW7"/>
                             <constraint firstItem="kYd-bk-Br1" firstAttribute="top" secondItem="8Ak-fo-yWU" secondAttribute="top" id="mnC-MD-9Ye"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Ak-fo-yWU"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorite" id="b1N-Hr-gsI"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="favorite_35" id="b1N-Hr-gsI"/>
                     <connections>
                         <outlet property="tableView" destination="kYd-bk-Br1" id="14q-Tw-Vad"/>
                     </connections>
@@ -413,17 +452,27 @@
                                     <outlet property="delegate" destination="Fiy-tf-Ysl" id="jye-KG-LX3"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.34999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHn-0k-L5D">
+                                <rect key="frame" x="20" y="745" width="34" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="⬆"/>
+                                <connections>
+                                    <action selector="clickScrollTop:" destination="Fiy-tf-Ysl" eventType="touchUpInside" id="mh9-zf-VKm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vfm-Kl-Waz" firstAttribute="bottom" secondItem="DYx-oF-Akc" secondAttribute="bottom" id="5uJ-oV-0yu"/>
+                            <constraint firstItem="vHn-0k-L5D" firstAttribute="leading" secondItem="vfm-Kl-Waz" secondAttribute="leading" constant="20" id="Oww-Qg-P6C"/>
+                            <constraint firstItem="vfm-Kl-Waz" firstAttribute="bottom" secondItem="vHn-0k-L5D" secondAttribute="bottom" constant="20" id="VDu-kQ-Wl2"/>
                             <constraint firstItem="DYx-oF-Akc" firstAttribute="leading" secondItem="vfm-Kl-Waz" secondAttribute="leading" id="hWF-X6-aAP"/>
                             <constraint firstItem="DYx-oF-Akc" firstAttribute="top" secondItem="vfm-Kl-Waz" secondAttribute="top" id="onf-Wc-Hbn"/>
                             <constraint firstItem="vfm-Kl-Waz" firstAttribute="trailing" secondItem="DYx-oF-Akc" secondAttribute="trailing" id="vJB-UC-tQ7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vfm-Kl-Waz"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Viewed" id="OiS-tM-ITi"/>
+                    <tabBarItem key="tabBarItem" title="Viewed" image="view_35" id="OiS-tM-ITi"/>
                     <connections>
                         <outlet property="tableView" destination="DYx-oF-Akc" id="4Iv-n5-eeV"/>
                     </connections>
@@ -442,10 +491,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="feo-Dp-0WF" kind="relationship" relationship="viewControllers" id="66f-GZ-Zu8"/>
                         <segue destination="Fiy-tf-Ysl" kind="relationship" relationship="viewControllers" id="GMA-xF-0ko"/>
                         <segue destination="rF5-tD-5l8" kind="relationship" relationship="viewControllers" id="EM8-2m-ldf"/>
                         <segue destination="1IV-JL-2CM" kind="relationship" relationship="viewControllers" id="Kuf-tJ-NAk"/>
-                        <segue destination="feo-Dp-0WF" kind="relationship" relationship="viewControllers" id="66f-GZ-Zu8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmi-GL-zcy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -453,4 +502,10 @@
             <point key="canvasLocation" x="975" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="email_35" width="35" height="35"/>
+        <image name="favorite_35" width="35" height="35"/>
+        <image name="share_35" width="35" height="35"/>
+        <image name="view_35" width="35" height="35"/>
+    </resources>
 </document>

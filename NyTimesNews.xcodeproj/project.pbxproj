@@ -22,6 +22,7 @@
 		A0E4EDDB2317D28D000D62F2 /* NyTimesNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0E4EDD92317D28D000D62F2 /* NyTimesNews.xcdatamodeld */; };
 		A0E4EDDD2317D28E000D62F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E4EDDC2317D28E000D62F2 /* Assets.xcassets */; };
 		A0E4EDE02317D28E000D62F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0E4EDDE2317D28E000D62F2 /* LaunchScreen.storyboard */; };
+		A0E6F6C3231C3D30007D09BA /* extensionTableViewScrollTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6F6C2231C3D30007D09BA /* extensionTableViewScrollTop.swift */; };
 		F4B1469B4682DDD34A9D9282 /* Pods_NyTimesNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 750982299B53FF74C19A9F9C /* Pods_NyTimesNews.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		A0E4EDDC2317D28E000D62F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0E4EDDF2317D28E000D62F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0E4EDE12317D28E000D62F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0E6F6C2231C3D30007D09BA /* extensionTableViewScrollTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionTableViewScrollTop.swift; sourceTree = "<group>"; };
 		FE476041FF9C9822AA56142B /* Pods-NyTimesNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NyTimesNews.release.xcconfig"; path = "Target Support Files/Pods-NyTimesNews/Pods-NyTimesNews.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 			children = (
 				A035FB5D231A744E00D0AAB6 /* FavoriteNewsCore.swift */,
 				A045AAAF2317E81B00ECBC75 /* RequestManeger.swift */,
+				A0E6F6C2231C3D30007D09BA /* extensionTableViewScrollTop.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -100,13 +103,6 @@
 			path = V;
 			sourceTree = "<group>";
 		};
-		A045AAA22317DD2900ECBC75 /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
-			sourceTree = "<group>";
-		};
 		A0E4EDC62317D28D000D62F2 = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				A0E4EDD22317D28D000D62F2 /* AppDelegate.swift */,
-				A045AAA22317DD2900ECBC75 /* M */,
 				A045AAA12317DD2500ECBC75 /* V */,
 				A045AAA02317DD2200ECBC75 /* C */,
 				A045AA9F2317DD1E00ECBC75 /* Utils */,
@@ -272,6 +267,7 @@
 				A045AAAE2317DFDE00ECBC75 /* MostEmailedCell.swift in Sources */,
 				A089C3372319420400C36B68 /* FavoriteCell.swift in Sources */,
 				A089C32E23190F2200C36B68 /* FavoriteController.swift in Sources */,
+				A0E6F6C3231C3D30007D09BA /* extensionTableViewScrollTop.swift in Sources */,
 				A045AAA62317DF8300ECBC75 /* MostViewedCell.swift in Sources */,
 				A045AAAC2317DFD300ECBC75 /* MostEmailedController.swift in Sources */,
 				A045AAB02317E81B00ECBC75 /* RequestManeger.swift in Sources */,
