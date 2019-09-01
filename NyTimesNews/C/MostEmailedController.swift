@@ -14,16 +14,44 @@ import SafariServices
 class MostEmailedController: UIViewController {
 
     private var news: JSON?
+    private var firstRequestNews: Bool = false
     private let category: String = "emailed"
     private let requestManeger = RequestManeger()
+    private let favoriteNewsCore = FavoriteNewsCore()
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewWillAppear(_ animated: Bool) {
+    @objc func handleRefreshControl() {
+        getEmailedNews()
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func configureRefreshControl () {
+        //Pull to refresh and request by filters
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    func checkForDuplicateNews(cell: MostEmailedCell) -> Bool {
+        for index in self.favoriteNewsCore.favoriteNews {
+            if JSON(index.value(forKeyPath: "news")!)["url"].string == cell.url {
+                return true
+            }
+        }
+        return false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if firstRequestNews == false {
+            getEmailedNews()
+        }
+        self.favoriteNewsCore.take()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getViewedNews()
+        configureRefreshControl()
     }
 }
 
@@ -47,15 +75,33 @@ extension MostEmailedController: UITableViewDelegate, UITableViewDataSource, SFS
             present(vc, animated: true, completion: nil)
         }
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let favoriteNews = UIContextualAction(style: .normal, title: "") { [weak self] action, view, completion in
+            guard let self = self else { return }
+            let cell = tableView.cellForRow(at: indexPath) as! MostEmailedCell
+            if self.checkForDuplicateNews(cell: cell) == true {
+                self.alertError(title: "", message: "This news has already been added to your favorites.")
+            } else {
+                self.favoriteNewsCore.save(oneNews: self.news?["results"][indexPath.row])
+            }
+            completion(true)
+        }
+        favoriteNews.image = resizedImage(image: #imageLiteral(resourceName: "favorite"), for: CGSize(width: 35.0, height: 35.0))
+        favoriteNews.backgroundColor = .green
+        return UISwipeActionsConfiguration(actions: [favoriteNews])
+    }
 }
 
 extension MostEmailedController {
     
-    func getViewedNews() {
+    func getEmailedNews() {
         requestManeger.getNew(category: self.category, soursForShared: "", completationHandler: { [weak self] response in
             guard let self = self else { return }
             if let response = response {
                 self.news = response
+                self.firstRequestNews = true
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -63,6 +109,13 @@ extension MostEmailedController {
                 self.alertError(title: "Error", message: "No connection to the news source server. Try later")
             }
         })
+    }
+    
+    func resizedImage(image: UIImage, for size: CGSize) -> UIImage? {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { (context) in
+            image.draw(in: CGRect(origin: .zero, size: size))
+        }
     }
     
     func alertError(title: String, message: String) {

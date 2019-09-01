@@ -231,22 +231,79 @@
         <!--Favorite-->
         <scene sceneID="FtN-cS-Lc0">
             <objects>
-                <viewController id="feo-Dp-0WF" sceneMemberID="viewController">
+                <viewController id="feo-Dp-0WF" customClass="FavoriteController" customModule="NyTimesNews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FQq-UH-3e8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kYd-bk-Br1">
+                            <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kYd-bk-Br1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCell" rowHeight="234" id="fbf-bn-r6P">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCell" rowHeight="234" id="fbf-bn-r6P" customClass="FavoriteCell" customModule="NyTimesNews" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="234"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fbf-bn-r6P" id="bb2-IW-x8S">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="233.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJW-GD-0BE">
+                                                    <rect key="frame" x="20" y="11" width="43" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-00-00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKu-8q-qqL">
+                                                    <rect key="frame" x="316.5" y="11" width="77.5" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="77.5" id="mos-fx-Tvg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-UL-Nml">
+                                                    <rect key="frame" x="22" y="29" width="370" height="155.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Nm-0j-XR1">
+                                                            <rect key="frame" x="0.0" y="0.0" width="370" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ta-fg-BOS">
+                                                            <rect key="frame" x="60" y="24" width="250" height="131.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="3ta-fg-BOS" secondAttribute="height" multiplier="19 : 10" id="E6N-8d-2gV"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="3ta-fg-BOS" firstAttribute="leading" secondItem="Mlb-UL-Nml" secondAttribute="leading" constant="60" id="FuX-oT-Sk5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8Nm-0j-XR1" secondAttribute="trailing" id="O0Q-vv-mgu"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3ta-fg-BOS" secondAttribute="trailing" constant="60" id="Rzf-Nn-kS7"/>
+                                                        <constraint firstItem="8Nm-0j-XR1" firstAttribute="leading" secondItem="Mlb-UL-Nml" secondAttribute="leading" id="Ybb-2F-dbi"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Mlb-UL-Nml" firstAttribute="leading" secondItem="bb2-IW-x8S" secondAttribute="leadingMargin" constant="2" id="Aud-G4-ITW"/>
+                                                <constraint firstItem="OKu-8q-qqL" firstAttribute="top" secondItem="bb2-IW-x8S" secondAttribute="topMargin" id="UuB-F1-IdX"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OKu-8q-qqL" secondAttribute="trailing" id="ZbA-NH-dmi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Mlb-UL-Nml" secondAttribute="trailing" constant="2" id="agt-1X-PO8"/>
+                                                <constraint firstItem="aJW-GD-0BE" firstAttribute="leading" secondItem="bb2-IW-x8S" secondAttribute="leadingMargin" id="fK6-O2-0G2"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Mlb-UL-Nml" secondAttribute="bottom" constant="5" id="iIo-SY-9j0"/>
+                                                <constraint firstItem="Mlb-UL-Nml" firstAttribute="top" secondItem="OKu-8q-qqL" secondAttribute="bottom" constant="2" id="ngd-ZI-dTS"/>
+                                                <constraint firstItem="aJW-GD-0BE" firstAttribute="top" secondItem="bb2-IW-x8S" secondAttribute="topMargin" id="uiW-Th-ghH"/>
+                                                <constraint firstItem="OKu-8q-qqL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aJW-GD-0BE" secondAttribute="trailing" constant="5" id="y25-9q-4C7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="date" destination="OKu-8q-qqL" id="G3j-Hy-stf"/>
+                                            <outlet property="imageNews" destination="3ta-fg-BOS" id="T3j-MH-0oH"/>
+                                            <outlet property="soursce" destination="aJW-GD-0BE" id="7Ad-nV-j1P"/>
+                                            <outlet property="title" destination="8Nm-0j-XR1" id="gwM-K4-s64"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -265,6 +322,9 @@
                         <viewLayoutGuide key="safeArea" id="8Ak-fo-yWU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorite" id="b1N-Hr-gsI"/>
+                    <connections>
+                        <outlet property="tableView" destination="kYd-bk-Br1" id="14q-Tw-Vad"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGq-XV-Hsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
